@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GoTaxLogController {
 
-    GoTaxLogService goTaxLogService;
+    private GoTaxLogService goTaxLogService;
 
     @Autowired
     public GoTaxLogController(GoTaxLogService goTaxLogService) {
