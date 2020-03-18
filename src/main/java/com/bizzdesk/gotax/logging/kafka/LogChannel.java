@@ -5,6 +5,6 @@ import org.springframework.messaging.SubscribableChannel;
 
 public interface LogChannel {
 
-    @Input(value = "gotax-logs")
+    @Input(value = "gotax_logs")
     SubscribableChannel input();
 }

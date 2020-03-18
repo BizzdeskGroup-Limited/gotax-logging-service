@@ -21,7 +21,8 @@ public class GoTaxLogService {
     public GoTaxLogService(GoTaxLogsRepository goTaxLogsRepository) {
         this.goTaxLogsRepository = goTaxLogsRepository;
     }
-    @ServiceActivator(inputChannel = "gotax-logs")
+
+    @ServiceActivator(inputChannel = "gotax_logs")
     public void writeTransactionsToMongoDB(Message<String> goTaxLogsMessage) {
         try {
             GoTaxLogHelper goTaxLogHelper = new ObjectMapper().readValue(goTaxLogsMessage.getPayload(), GoTaxLogHelper.class);
@@ -34,7 +35,6 @@ public class GoTaxLogService {
 
     public Page<GoTaxLogs> getAllLogs(int pageIndex, int pageSize) {
         PageRequest pageRequest = PageRequest.of(pageIndex, pageSize);
-        Page<GoTaxLogs> goTaxLogsPage = goTaxLogsRepository.findAll(pageRequest);
-        return goTaxLogsPage;
+        return goTaxLogsRepository.findAll(pageRequest);
     }
 }
